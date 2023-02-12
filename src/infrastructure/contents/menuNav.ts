@@ -10,7 +10,7 @@ interface MenuNavProps {
 export const menuNav: MenuNavProps[] = [
   {href: Routing.HOME, name: 'Home'},
   {href: Routing.PRODUCT, name: 'Shop', label:'CRUD + Web Socket'},
-  // {href: Routing.TRANSACTION, name: 'Transaction'},
+  {href: Routing.TRANSACTION, name: 'Transaction'},
   {href: Routing.CHAT, name: 'Group Chat', label: 'Web Socket'},
   {href: Routing.NOTE, name: 'Group Note', label: 'Web Socket'},
 ];

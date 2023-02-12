@@ -1,4 +1,4 @@
-import jwt_decode from "jwt-decode";
+import jwtDecode, {JwtPayload} from "jwt-decode";
 
 export function setToken(data: string) {
     localStorage.setItem("_u12", data);
@@ -14,7 +14,7 @@ export function removeToken() {
 
 export function getProfile(): any {
     if (getToken()) {
-        return jwt_decode(getToken());
+        return jwtDecode<JwtPayload>(getToken());
     }
     return null;
 }

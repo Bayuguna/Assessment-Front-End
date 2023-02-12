@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import ProductApi from "../api/productApi";
 import { io } from "socket.io-client";
+import useCart from "./cartHook";
 let socket: any;
 
 const useProduct = () => {
@@ -9,9 +10,10 @@ const useProduct = () => {
     const [getDataProduct, setDataProduct] = useState<any>();
     const [dialogAddProduct, setDialogAddProduct] = useState(false);
     const [dialogUpdateProduct, setDialogUpdateProduct] = useState(false);
-    const [addProduct, setAddProduct] = useState({image:"", name: "", description: "", type:"car", price: "", stock: ""});
     const [updateProduct, setUpdateProduct] = useState({_id: "", image:"", name: "", description: "", type:"car", price: "", stock: ""});
     const [detailModal , setDetailModal] = useState(false);
+
+    const {cart, handleAddCart} = useCart();
 
 
     //Fetch Data
@@ -50,10 +52,10 @@ const useProduct = () => {
     }, [getDataProduct])
 
     //Post Product
-    const handleAddProduct = () => 
+    const [addProduct, setAddProduct] = useState({image:"", name: "", description: "", type:"car", price: "", stock: ""});
+    function handleAddProduct() 
     {
         // console.log('addProduct', addProduct)
-
         const data = {
             name: addProduct.name,
             description: addProduct.description,
@@ -62,31 +64,16 @@ const useProduct = () => {
             image: addProduct.image,
             stock: addProduct.stock
         }
+
+        console.log('product', data);
+
         productApi.addProduct(data).then((res: any) => {
-            console.log('hai', res);
             handleFetchProduct();
             setDialogAddProduct(false);
         }).catch((err: any) => {
             console.log(err);
         })
     }
-
-    const handleDataProduct = (data:any) => {
-        const updateData = {
-            name: data.name,
-            description: data.description,
-            price: data.price,
-            type: data.type,
-            image: data.image,
-            stock: data.stock
-        }
-
-        console.log(addProduct)
-
-        setAddProduct(updateData);
-        setDialogAddProduct(true);
-    }
-
 
     //Update Product
     const handleUpdateProduct = () =>
@@ -147,6 +134,7 @@ const useProduct = () => {
 
     useEffect(() => {
         socketInitializer()
+        setCountCart(cart.length);
     }, [])
 
     const socketInitializer = async () => {
@@ -164,12 +152,12 @@ const useProduct = () => {
     }
 
     const onChangeCartHandler = (data:any) => {
-        // console.log(data)
-        let count = countCart;
+        let count = cart.length;
         count = count + 1;
-        console.log(count)
         setCountCart(count);
         socket.emit('add-cart', count)
+        console.log(data)
+        handleAddCart(data);
     }
 
     return {
@@ -193,12 +181,11 @@ const useProduct = () => {
         setCountCart,
         handleDetailProduct,
         detailProduct,
-        handleDataProduct,
         handleDataUpdateProduct,
         updateData,
         setUpdateData,
         setDialogUpdateProduct,
-        dialogUpdateProduct
+        dialogUpdateProduct,
     }
     
 }

@@ -4,7 +4,9 @@ import useProduct from "../../../repository/hook/productHook";
 import Button from "../../components/atoms/Button";
 import Card from "../../components/atoms/Card";
 import SideBarright from "../../components/molecules/SideBarRight";
-import { DialogProduct } from "./DialogProduct";
+import DialogProduct from "./DialogProduct";
+import DialogAddProduct from "./DialogAddProduct";
+import { DialogUpdateProduct } from "./DialogUpdateProduct";
 
 
 const ProductPage = () => {
@@ -18,7 +20,7 @@ const ProductPage = () => {
                     <div className="flex justify-start w-full items-start p-10">
                         <Button style="primary" className="w-full" onClick={() => setDialogAddProduct(true)}>Add Product</Button>
 
-                        <DialogProduct show={dialogAddProduct} onClicCancel={() => {setDialogAddProduct(false)}} onClickYes={handleAddProduct} setProduct={setAddProduct} />
+                        <DialogAddProduct show={dialogAddProduct} onClicCancel={() => {setDialogAddProduct(false)}} />
                     </div>
                     <div className="flex flex-col space-y-6 w-full">
                         {products?.map((product:any, index:any) => (
@@ -55,7 +57,7 @@ const ProductPage = () => {
                                                     </div>
                                                     <div>
                                                         <Button style='success' className="w-full" onClick={() => {handleDataUpdateProduct(product)}}><PencilSquareIcon className="w-5 h-5 text-white" /></Button>
-                                                        <DialogProduct show={dialogUpdateProduct} onClicCancel={() => {setDialogUpdateProduct(false)}} onClickYes={handleUpdateProduct} data={updateData} setProduct={setUpdateProduct}/>
+                                                        <DialogUpdateProduct show={dialogUpdateProduct} onClicCancel={() => {setDialogUpdateProduct(false)}} data={updateData} />
                                                     </div>
                                                     <div>
                                                         <Button style='danger' className="w-full" onClick={() => handleDeleteProduct(product._id)}><TrashIcon className="w-5 h-5 text-white" /></Button>

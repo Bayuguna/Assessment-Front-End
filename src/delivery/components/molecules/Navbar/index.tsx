@@ -57,6 +57,14 @@ const Navbar = () => {
                 </div>
                 <div>
                     <div className="flex flex-row space-x-5 justify-center items-center">
+                        <div className="relative">
+                            <Link href={Routing.CART}>
+                            <ShoppingCartIcon className="h-7 w-7 text-gold"/>
+                                <div className="absolute -top-1 -right-1 w-3 h-3 p-2 flex justify-center items-center bg-danger rounded-full">
+                                    <span className="text-[8px] text-white font-bold">{countCart}</span>
+                                </div>
+                            </Link>
+                        </div>
                         <div className={`block md:hidden`} onClick={() => {setMenu(!menu)}}>
                             <Bars3Icon className="h-7 w-7 text-gold"/>
                         </div>
@@ -73,14 +81,6 @@ const Navbar = () => {
                             onClickYes={handleLogout}
                             show={dialogConfirmLogout}
                         />
-                        <div className="relative">
-                            {/* <Link href={Routing.CART}> */}
-                            <ShoppingCartIcon className="h-7 w-7 text-gold"/>
-                                <div className="absolute -top-1 -right-1 w-3 h-3 p-2 flex justify-center items-center bg-danger rounded-full">
-                                    <span className="text-[8px] text-white font-bold">{countCart}</span>
-                                </div>
-                            {/* </Link> */}
-                        </div>
                     </div>
                 </div>
             </nav>

@@ -8,6 +8,7 @@ const HomePage = () => {
     const [username, setUsername] = useState<string>("");
     useEffect(() => {
         setUsername(getProfile()?.username);
+        // console.log('username', getProfile())
     })
     return (
         <div className="flex justify-center items-center w-full h-screen">

@@ -5,24 +5,24 @@ import useProduct from "../../../repository/hook/productHook";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { useEffect } from "react";
 
-interface DialogProductProps {
+interface DialogAddProductProps {
   show: boolean;
   onClickYes?: any;
   onClicCancel?: any;
-  data?: any;
-  setProduct?: any;
 }
 
 
-export default function DialogProduct (props: DialogProductProps) {
-  const { show, onClickYes, onClicCancel, data, setProduct} = props;
+export default function DialogAddProduct (props: DialogAddProductProps) {
+  const { show, onClickYes, onClicCancel} = props;
+
+  const {setAddProduct, addProduct, handleAddProduct, dialogAddProduct} = useProduct()
 
   return (
     <Dialog
       fullWidth
       maxWidth={"xs"}
       scroll={"paper"}
-      open={show}
+      open={show ?? dialogAddProduct}
       aria-labelledby="alert-dialog-title"
       aria-describedby="alert-dialog-description"
     >
@@ -44,8 +44,8 @@ export default function DialogProduct (props: DialogProductProps) {
                   type="text"
                   text="Product Image"
                   placeholder="URL File"
-                  value={data?.image}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProduct({...data, image: e.target.value})}
+                  value={addProduct?.image}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddProduct({...addProduct, image: e.target.value})}
                   />
               </div>
             <div>
@@ -54,8 +54,8 @@ export default function DialogProduct (props: DialogProductProps) {
                   type="text"
                   text="Product Name"
                   placeholder="Product Name"
-                  value={data?.name}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProduct({...data, name: e.target.value})}
+                  value={addProduct?.name}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddProduct({...addProduct, name: e.target.value})}
                   />
               </div>
               <div>
@@ -64,8 +64,8 @@ export default function DialogProduct (props: DialogProductProps) {
                   type="text"
                   text="Product Description"
                   placeholder="Product Description"
-                  value={data?.description}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProduct({...data, description: e.target.value})}
+                  value={addProduct?.description}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddProduct({...addProduct, description: e.target.value})}
                   />
               </div>
               <div>
@@ -74,8 +74,8 @@ export default function DialogProduct (props: DialogProductProps) {
                   type="text"
                   text="Product Price"
                   placeholder="Product Price"
-                  value={data?.price}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProduct({...data, price: e.target.value})}
+                  value={addProduct?.price}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddProduct({...addProduct, price: e.target.value})}
                   />
               </div>
               <div>
@@ -84,8 +84,8 @@ export default function DialogProduct (props: DialogProductProps) {
                   type="number"
                   text="Product Stock"
                   placeholder="Product Stock"
-                  value={data?.stock}
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setProduct({...data, stock: e.target.value})}
+                  value={addProduct?.stock}
+                  onChange={(e: React.ChangeEvent<HTMLInputElement>) => setAddProduct({...addProduct, stock: e.target.value})}
                   />
               </div>
               <div>
@@ -94,7 +94,7 @@ export default function DialogProduct (props: DialogProductProps) {
               className="rounded-lg w-full"
                 size="small"
                 style="danger-hover"
-                onClick={onClickYes}
+                onClick={handleAddProduct}
               >
                 Submit
               </Button>

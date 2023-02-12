@@ -28,6 +28,8 @@ const useRegister = () => {
                 setError({open: true, message: "Password not match"});
             }
 
+            // console.log('res', Constant.HTTP_OK);
+
             if(res.status === Constant.HTTP_OK){
                 window.location.href = Routing.AUTH;
             }

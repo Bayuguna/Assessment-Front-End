@@ -5,7 +5,9 @@ export default class Constant {
 
     static MAX_IMAGE_SIZE = 5000
 
-    static HTTP_OK = 200 | 201;
+    static HTTP_OK = 200;
+
+    static HTTP_CREATED = 201;
 
     static HTTP_SERVER_ERROR = 500;
 
