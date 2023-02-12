@@ -1,0 +1,17 @@
+
+
+.input {
+    @apply py-1 px-2 rounded-md ;
+}
+
+.secondary{
+    @apply dark:bg-secondary placeholder:text-secondary focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary border border-secondary;
+}
+
+.medium{
+    @apply text-sm  px-3 py-3;
+}
+
+.small{
+    @apply text-xs px-2 py-2;
+}

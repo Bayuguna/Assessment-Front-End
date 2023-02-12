@@ -1,0 +1,9 @@
+.rounded {
+    @apply rounded-3xl;
+}
+
+
+.card {
+    background-color: theme("colors.white");
+    box-shadow: theme("boxShadow.xl");
+}

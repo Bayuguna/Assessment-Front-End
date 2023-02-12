@@ -1,0 +1,17 @@
+
+
+.secondary{
+    @apply text-secondary;
+}
+
+.large{
+    @apply text-base;
+}
+
+.medium{
+    @apply text-sm;
+}
+
+.small{
+    @apply text-xs;
+}
