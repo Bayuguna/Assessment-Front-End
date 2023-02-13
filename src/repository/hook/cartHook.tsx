@@ -28,8 +28,8 @@ const useCart = () => {
             user_id: "5f9f1b0b0b9b9c0b1c8b8b8b",
             qty: 1
         }
-        console.log('cartData', cartData);
         cartApi.addCarts(cartData).then((res: any) => {
+            console.log(res)
             handleFetchCart();
         }).catch((err: any) => {
             console.log(err);

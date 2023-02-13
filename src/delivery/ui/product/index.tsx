@@ -17,7 +17,7 @@ const ProductPage = () => {
             <div className="flex w-full h-full">
                 <div className="flex flex-col min-h-screen w-full  px-5 md:px-20 py-28 md:py-40">
 
-                    <div className="flex justify-start w-full items-start p-10">
+                    <div className="flex justify-start w-full items-start py-10">
                         <Button style="primary" className="w-full" onClick={() => setDialogAddProduct(true)}>Add Product</Button>
 
                         <DialogAddProduct show={dialogAddProduct} onClicCancel={() => {setDialogAddProduct(false)}} />
@@ -45,22 +45,22 @@ const ProductPage = () => {
                                                     <div className="flex w-full">
                                                     {
                                                         product.stock ?
-                                                        <Button style='danger-outline' className="w-full" onClick={() => handleDetailProduct(product)}>Get Now</Button>
+                                                        <Button style='danger-outline' className="w-full rounded-md" onClick={() => handleDetailProduct(product)}>Get Now</Button>
                                                         :
                                                         <Button disabled={true} style={'secondary'} className="w-full">Out Of Stock</Button>
                                                     }
                                                     </div>
                                                     <div>
-                                                        <Button style='primary' className="w-full" onClick={() => {onChangeCartHandler(product)}}>
+                                                        <Button style='primary' className="w-full rounded-md" onClick={() => {onChangeCartHandler(product)}}>
                                                             <ShoppingCartIcon className="w-5 h-5 text-white" />
                                                         </Button>
                                                     </div>
                                                     <div>
-                                                        <Button style='success' className="w-full" onClick={() => {handleDataUpdateProduct(product)}}><PencilSquareIcon className="w-5 h-5 text-white" /></Button>
+                                                        <Button style='success' className="w-full rounded-md" onClick={() => {handleDataUpdateProduct(product)}}><PencilSquareIcon className="w-5 h-5 text-white" /></Button>
                                                         <DialogUpdateProduct show={dialogUpdateProduct} onClicCancel={() => {setDialogUpdateProduct(false)}} data={updateData} />
                                                     </div>
                                                     <div>
-                                                        <Button style='danger' className="w-full" onClick={() => handleDeleteProduct(product._id)}><TrashIcon className="w-5 h-5 text-white" /></Button>
+                                                        <Button style='danger' className="w-full rounded-md" onClick={() => handleDeleteProduct(product._id)}><TrashIcon className="w-5 h-5 text-white" /></Button>
                                                     </div>
                                             </div>
                                         </div>

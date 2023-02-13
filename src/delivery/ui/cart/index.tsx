@@ -16,6 +16,7 @@ const CartPage = () => {
         <div className="flex justify-center pb-10">
             <span className="font-bold text-xl uppercase text-danger">Assessment Cart</span>
         </div>
+        <div className="flex flex-col space-y-5">
         {cart.map((item:any, index:any) => (
            <div key={index}>
             <Card  className="flex flex-col md:flex-row rounded-2xl overflow-hidden h-full">
@@ -60,6 +61,7 @@ const CartPage = () => {
             </Card>
            </div>
         ))}
+        </div>
         </div>
     );
 };
